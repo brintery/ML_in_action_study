@@ -97,4 +97,4 @@ def classify_person():
 #ax = plt.figure().add_subplot(111)
 #ax.scatter(data[:, 0], data[:, 1],  np.array(label), np.array(label))
 #classify_person()
-class_result, class_label = dating_class_test()
+# class_result, class_label = dating_class_test()
