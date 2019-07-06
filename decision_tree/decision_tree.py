@@ -5,8 +5,8 @@
 # @Author: Mindon
 # @Email: gaomindong@live.com
 # @Create At: 2018-03-08 14:31:10
-# @Last Modified By: Mindon
-# @Last Modified At: 2018-03-08 16:19:30
+# @Last Modified By: Mindon Gao
+# @Last Modified At: 2019-07-06 11:09:45
 # @Description: algorithm of decision tree.
 
 from math import log
@@ -14,7 +14,7 @@ import operator
 import pickle
 import copy
 
-
+# create test dataset
 def create_dataset():
     data_set = [[1, 1, 'yes'], [1, 1, 'yes'], 
                 [1, 0, 'no'], [0, 1, 'no'],
@@ -23,9 +23,11 @@ def create_dataset():
     
     return data_set, labels
 
-
+# calculate shannon entrotype
 def calc_shannonent(data_set):
+    # the row length of the dataset
     num_entries = len(data_set)
+    # counts the number when the label occur
     label_count = {}
     for feat in data_set:
         current_label = feat[-1]
@@ -33,14 +35,24 @@ def calc_shannonent(data_set):
             label_count[current_label] = 0
         label_count[current_label] += 1
     
+    # calculate shannon entrotype
     shannon_ent = 0.0
     for key in label_count:
+        # p(xi)
         prob = float(label_count[key])/num_entries
         shannon_ent -= prob * log(prob, 2)
     return shannon_ent
 
 
 def split_dataset(data_set, index, value):
+    """
+    split_dataset: use feat[index]=value split dataset, exclude column of this index
+    Args:
+        index: the column of the index(feature) for each row(sample)
+        value: the value of the column of the index
+    Returns:
+        ret_dataset: the sub dataset when the feat[index]=value, like the serval leaf node
+    """
     ret_dataset = []
     for feat in data_set:
         if feat[index] == value:
