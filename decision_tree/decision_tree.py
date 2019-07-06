@@ -6,7 +6,7 @@
 # @Email: gaomindong@live.com
 # @Create At: 2018-03-08 14:31:10
 # @Last Modified By: Mindon Gao
-# @Last Modified At: 2019-07-06 11:09:45
+# @Last Modified At: 2019-07-06 23:44:02
 # @Description: algorithm of decision tree.
 
 from math import log
